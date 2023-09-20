@@ -29,23 +29,30 @@ body {
     width: 300px;
 }
 
-.text-container {
+.main-text-container {
 
 }
 
-.text {
+.main-text {
     font-family: 'Mulish', sans-serif;
     text-align: center;
     padding-right: 20px;
+    margin: 20px;
     /* margin: 20px 50px 20px 50px; */
     font-size: 23px;
     font-weight: 200;
     line-height: 120%;
     text-wrap: balance;
     color: var(--global-text-color);
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
-.text-highlight {
+.main-text--hide {
+    opacity: 0 !important;
+}
+
+.main-text--highlight {
     text-transform: uppercase;
 }
 

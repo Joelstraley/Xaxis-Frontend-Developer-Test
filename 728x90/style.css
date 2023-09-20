@@ -1,0 +1,70 @@
+@import url("../assets/global-style.css");
+
+body {
+    background-image: url('./assets/background--main.png');
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    width: 728px;
+    height: 90px;
+    max-width: 728px;
+    max-height: 90px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    margin: -8px 8px 2px -8px;
+    background-color: var(--global-header-color);
+    text-align: center;
+    padding: 10px 0 10px 0;
+    /* 
+    308px wide
+    height 47px
+    */
+}
+
+.main-container {
+    width: 728px;
+    height: 90px;
+}
+
+.main-text-container {
+
+}
+
+.main-text {
+    font-family: 'Mulish', sans-serif;
+    text-align: center;
+    padding-right: 20px;
+    margin: 20px;
+    /* margin: 20px 50px 20px 50px; */
+    font-size: 23px;
+    font-weight: 200;
+    line-height: 120%;
+    text-wrap: balance;
+    color: var(--global-text-color);
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.main-text--hide {
+    opacity: 0 !important;
+}
+
+.main-text--highlight {
+    text-transform: uppercase;
+}
+
+.footer-container {
+    position: relative;
+}
+
+.footer-text {
+    font-family: 'Mulish', sans-serif;
+    position: relative;
+    margin: 20px 8px;
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--global-text-color);
+}
