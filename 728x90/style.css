@@ -52,10 +52,6 @@ body {
     opacity: 0 !important;
 }
 
-.main-text--highlight {
-    text-transform: uppercase;
-}
-
 .footer-container {
     position: relative;
 }

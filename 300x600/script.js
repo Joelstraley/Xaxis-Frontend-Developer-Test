@@ -14,13 +14,17 @@ function showProductImage() {
     document.documentElement.style.backgroundImage = "url('./assets/background--product.png')";
 
     document.querySelector('.footer-text').style.color = 'var(--global-button-color)';
-    document.querySelector('.footer-text').style.transition = '2s';
+    document.querySelector('.footer-text').style.transition = '3s';
 
-    document.querySelector('.header-container').style.backgroundColor = 'transparent'; 
+    document.querySelector('.header-container').style.backgroundColor = 'transparent';
+    document.querySelector('.header-container').style.transition = '4s';
+   /*  document.querySelector('.header-container').style.transitionTimingFunction = 'ease-in';  */
     
     let mainElement = document.querySelector('.main-container')
     let button = document.createElement('button')
-    button.classList.add('.button')
+    button.classList.add('button')
+    button.style.transitionTimingFunction = 'ease-out'
+/*     button.style.transition = '3s'; */
     button.innerText = buttonText
     button.addEventListener('click', () => document.location.href = `${buttonURL}`)
     mainElement.after(button)
@@ -44,7 +48,7 @@ function rotateThroughText() {
     }
 
     if (counter === textCollection.length -1) {
-        setTimeout(showProductImage(), 100)
+        setTimeout(showProductImage(), 1000)
     }
 }
 
