@@ -1,121 +1,81 @@
-const mainText = document.getElementById('main-text-container')
-const body = document.getElementsByTagName('body')[0]
-
-/* 
-Text array
-for-loop - setTimeout to run through array
-if index is at last, run show product function to update background image and remove header
-*/
+let buttonText = "BUY NOW";
+let buttonURL = 'https://www.lumifydrops.com/';
 
 let textCollection = [
-    `<h1 class="main-text">
-        Elevate the look of your eyes with LUMIFY eye drops
-    </h1>`, 
+    `Elevate the look of your eyes with LUMIFY eye drops`,
+    `LUMIFY dramatically reduces redness in    
+        <span style="font-weight: bold;">1 minute</span>`,
+    `And lasts up to 
+        <span style="font-weight: bold;"> 8 hours</span>`,
+  `See for yourself`
+]; 
 
-    `<h1 class="main-text">
-        LUMIFY dramatically reduces redness in    
-        <span style="font-weight: bold;">1 minute</span>
-    </h1>`,
 
-    `<h1 class="main-text">
-        And lasts up to 
-        <span style="font-weight: bold;"> 8 hours</span>
-    </h1>`,
+function showProductImage() {
+    //Update Background Image
+    document.documentElement.style.backgroundImage = "url('./assets/background--product.png')";
 
-    `<h1 class="main-text">
-        See for yourself
-    </h1>`
-]
+    //Update Footer Text Color
+    document.querySelector('.footer-text').style.color = 'var(--global-button-color)';
+    document.querySelector('.footer-text').style.transition = '3s';
 
-//setInterval(5000, showProductImage)
+    //Update Footer Text Color
+    document.querySelector('.header-container').style.backgroundColor = 'transparent';
+    document.querySelector('.header-container').style.transition = '4s';
 
-function showProductImage(counter) {
-    console.log("body", body)
-    body.style.backgroundImage = "url('./assets/background--product.png')";
-        mainText.innerHTML = textCollection[textCollection.length - 1]
-        mainText.classList.remove('main-text--hide')
+    createButton();
 }
 
-/* if (counter < textCollection.length - 1) {
-    setInterval(rotateThroughText, 2500)
-} else if (counter === textCollection.length - 1) {
-    showProductImage()
-    //clearInterval(timer)
-} */
+function createButton(){
+    let mainElement = document.querySelector('.main-container')
+    let button = document.createElement('button')
 
+    button.classList.add('button')
+    button.style.transitionTimingFunction = 'ease-out'
+
+    button.innerText = buttonText
+    button.addEventListener('click', () => document.location.href = `${buttonURL}`)
+    
+    //Attach Button to Main in HTML
+    mainElement.after(button)
+}
+
+//Initiate Counter to iterate through textCollection array
 let counter = 0
 
 function rotateThroughText() {
-    console.log(counter)
-        //mainText.classList.add('main-text--hide')
-        const timer = setTimeout(function () {
-            mainText.innerHTML = textCollection[counter]
-            mainText.classList.remove('main-text--hide')
-            if (counter < textCollection.length - 1){
-                counter++
-            }
-        }, 500)
-
-        if (counter < textCollection.length - 1) {
-            setInterval(rotateThroughText, 2500)
-        }
-
-        if (counter === textCollection.length - 1) {
-            showProductImage(counter)
-            counter++
-        }
+    //check to make sure counter has not gone outside the Text Array 
+    if (counter < textCollection.length){
+        let text = textCollection[counter]
+        const mainText = document.querySelector('.main-text')
         
-       if (counter > textCollection.length -1){
-            clearInterval(timer)
-        } 
-        ///clearInterval(timer)
-}
+        //At initial load, the first test item does not fade in
+        if (counter === 0){
+            mainText.style.opacity = "1"
+        } else {
+            //reset opacity so all other text can fade in
+            mainText.style.opacity = "0"
+        }
 
+    //Hide the current text
+    mainText.classList.remove('main-text--show')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* function updateText(text) {
-    console.log('update', text)
-    const timer = setInterval(() => {
+    setTimeout(() => {
+        //Update counter
+        counter++
+        //Update text
         mainText.innerHTML = text
-    }, 1000)
-   return clearInterval(timer)
+        //Fade in new text
+        mainText.classList.add('main-text--show')
+        //Recursively call the function on next text item 
+        setTimeout(rotateThroughText, 2000)
+      }, 1000)
+    }
+
+    if (counter === textCollection.length -1) {
+        //At final Text item call the function, in 1 second, to fade in Product image and button
+        setTimeout(showProductImage(), 1000)
+    }
 }
 
-function rotateThroughText() {
-   // mainText.innerHTML = textCollection[1]
-
-    for (let i = 0; i < textCollection.length; i++) {
-        console.log('HTML', mainText, "text", textCollection[i])
-        if (i === textCollection.length -1){
-            showProduct()
-        } 
-            updateText(textCollection[i])
-    } 
-} */
-
-//rotateThroughText()
-window.addEventListener('load', rotateThroughText)
-
-
-/* 
-    const timer = setInterval(() => {
-      setDisplayText((prevText) => prevText + flag[currIndex]);
-      setCurrIndex((prevIndex) => prevIndex + 1);
-    }, 500);
-
-    return () => clearInterval(timer);
-*/
+rotateThroughText()
