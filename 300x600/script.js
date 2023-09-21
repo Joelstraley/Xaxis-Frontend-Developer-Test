@@ -1,3 +1,4 @@
+/// Adjustable variables: 
 let buttonText = "BUY NOW";
 let buttonURL = 'https://www.lumifydrops.com/';
 
@@ -10,25 +11,29 @@ let textCollection = [
   `See for yourself`
 ];
 
+//DOM element variables:
+const body = document.body
+const header = document.querySelector('.header-container')
+const footer = document.querySelector('.footer-text')
+const mainElement = document.querySelector('.main-container')
+
 function showProductImage() {
     //Update Background Image
-    document.documentElement.style.backgroundImage = "url('./assets/background--product.png')";
+    body.style.backgroundImage = "url('./assets/background--product.png')";
+    body.style.transition = "2s";
 
     //Update Footer Text Color
-    document.querySelector('.footer-text').style.color = 'var(--global-button-color)';
-    document.querySelector('.footer-text').style.transition = '3s';
+    footer.style.color = 'var(--global-button-color)';
+    footer.style.transition = '3s';
 
     //Update Footer Text Color
-    document.querySelector('.header-container').style.backgroundColor = 'transparent';
-    document.querySelector('.header-container').style.transition = '4s';
+    header.style.backgroundColor = 'transparent';
+    header.style.transition = '4s';
 
-    createButton();
 }
 
 function createButton(){
-    let mainElement = document.querySelector('.main-container')
     let button = document.createElement('button')
-
     button.classList.add('button')
     button.style.transitionTimingFunction = 'ease-out'
 
@@ -73,7 +78,7 @@ function rotateThroughText() {
 
     if (counter === textCollection.length -1) {
         //At final Text item call the function, in 1 second, to fade in Product image and button
-        setTimeout(showProductImage(), 1000)
+        setTimeout(showProductImage(),createButton(), 1000)
     }
 }
 
