@@ -1,28 +1,27 @@
-const mainText = document.getElementById('main-text-container')
 const body = document.getElementsByTagName('body')[0]
 
 let textCollection = [
-  `<h1 class="main-text">
+  `
         Elevate the look of your eyes with LUMIFY eye drops
-    </h1>`,
+    `,
 
-  `<h1 class="main-text">
+  `
         LUMIFY dramatically reduces redness in    
         <span style="font-weight: bold;">1 minute</span>
-    </h1>`,
+    `,
 
-  `<h1 class="main-text">
+  `
         And lasts up to 
         <span style="font-weight: bold;"> 8 hours</span>
-    </h1>`,
+    `,
 
-  `<h1 class="main-text">
+  `
         See for yourself
-    </h1>`
+    `
 ]
 
-function showProductImage(text) {
-  body.style.backgroundImage = "url('background--product.png')";
+function showProductImage() {
+  body.style.backgroundImage = "url('./assets/background--product.png')";
   
   /*   mainText.classList.add('main-text--hide')
     mainText.innerHTML = text
@@ -32,26 +31,25 @@ function showProductImage(text) {
 
 let counter = 0
 
-mainText.innerHTML = textCollection[0]
+//mainText.innerHTML = textCollection[0]
 
 function rotateThroughText() {
-  text = textCollection[counter]
+    if (counter < textCollection.length){
+        let text = textCollection[counter]
+        const mainText = document.querySelector('.main-text')
 
-  setTimeout(() => {
-    
-    mainText.classList.add('main-text--hide')
-    mainText.innerHTML = text
-    mainText.classList.remove('main-text--hide')
-    
-    counter++
+        mainText.classList.remove('main-text--show')
 
-    if (counter === textCollection.length) {
-      return showProductImage(text)
-    }
-
-    rotateThroughText()
-  
-}, 2000)
+        setTimeout(() => {
+          mainText.innerHTML = text
+          mainText.classList.add('main-text--show')
+          
+          counter++
+          setTimeout(rotateThroughText, 2000)
+      }, 1000)
+    } else if (counter === textCollection.length) {
+    return showProductImage()
+  }
 }
 
 rotateThroughText()

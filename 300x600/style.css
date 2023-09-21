@@ -44,17 +44,17 @@ body {
     line-height: 120%;
     text-wrap: balance;
     color: var(--global-text-color);
-    opacity: 1;
-    transition: opacity 2s;
+    opacity: 0;
+    transition: opacity 1s;
+/*     opacity: 0;
+    transition: opacity 1s; */
      /* This timing applies on the way OUT */
-    transition-timing-function: ease-in;
-
+    /* transition-timing-function: ease-in; */
   /* Quick on the way out */
-  transition: 0.2s;
 }
 
-.main-text--hide {
-    opacity: 0 !important;
+.main-text--show {
+    opacity: 1 !important;
 }
 
 .main-text--highlight {
