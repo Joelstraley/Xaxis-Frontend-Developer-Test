@@ -25,8 +25,8 @@ body {
 }
 
 .main-container {
-    height: 600px;
     width: 300px;
+    height: 600px;
 }
 
 .main-text-container {
@@ -45,7 +45,12 @@ body {
     text-wrap: balance;
     color: var(--global-text-color);
     opacity: 1;
-    transition: opacity 0.5s;
+    transition: opacity 2s;
+     /* This timing applies on the way OUT */
+    transition-timing-function: ease-in;
+
+  /* Quick on the way out */
+  transition: 0.2s;
 }
 
 .main-text--hide {
