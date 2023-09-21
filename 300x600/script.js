@@ -35,21 +35,23 @@ let counter = 0
 mainText.innerHTML = textCollection[0]
 
 function rotateThroughText() {
-  ///let time = 2000
-
   text = textCollection[counter]
-  console.log("out", text)
+
   setTimeout(() => {
+    
     mainText.classList.add('main-text--hide')
-    console.log("in", text)
     mainText.innerHTML = text
     mainText.classList.remove('main-text--hide')
+    
     counter++
+
     if (counter === textCollection.length) {
       return showProductImage(text)
     }
+
     rotateThroughText()
-  }, 2000)
+  
+}, 2000)
 }
 
 rotateThroughText()
