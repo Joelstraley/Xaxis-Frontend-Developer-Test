@@ -1,6 +1,13 @@
 @import url("../assets/global-style.css");
 
+html {
+    background-image: url('./assets/background--main.png');
+    background-repeat: no-repeat;
+    transition: 2s;
+}
+
 body {
+    margin: 0;
     background-image: url('./assets/background--main.png');
     background-repeat: no-repeat;
     display: flex;
@@ -11,60 +18,70 @@ body {
     max-height: 250px;
 }
 
+
 .header-container {
     display: flex;
     justify-content: center;
-    margin: -8px 8px 2px -8px;
     background-color: var(--global-header-color);
     text-align: center;
     padding: 10px 0 10px 0;
-    /* 
-    308px wide
-    height 47px
-    */
 }
 
 .main-container {
-    width: 250px;
-    height: 300px;
-}
-
-.main-text-container {
-
+    width: 300px;
+    height: 250px;
 }
 
 .main-text {
     font-family: 'Mulish', sans-serif;
     text-align: center;
-    padding-right: 20px;
-    margin: 20px;
-    /* margin: 20px 50px 20px 50px; */
-    font-size: 23px;
+    padding: 0 12px;
+    margin: 40px 140px 20px 10px;
+    font-size: 19px;
     font-weight: 200;
     line-height: 120%;
     text-wrap: balance;
+    text-align: left;
     color: var(--global-text-color);
-    opacity: 1;
-    transition: opacity 0.5s;
+    opacity: 0;
+    transition: opacity 1s;
+    transition-timing-function: ease-in;
 }
 
-.main-text--hide {
-    opacity: 0 !important;
+.main-text--show {
+    opacity: 1 !important;
+    transition: opacity 1s;
+    transition-timing-function: ease-out;
 }
 
-.main-text--highlight {
-    text-transform: uppercase;
+.button {
+    color: var(--global-text-color);
+    background-color: var(--global-button-color);
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 0 195px 60px 12px;
+    letter-spacing: 1.25px;
+    animation: fadeIn 5s;
 }
 
 .footer-container {
-    position: relative;
+     position: fixed;
 }
 
 .footer-text {
     font-family: 'Mulish', sans-serif;
-    position: relative;
-    margin: 20px 8px;
+    position: fixed;
+    margin: 230px 8px 0px 10px;
     font-size: 8px;
     font-weight: 700;
     color: var(--global-text-color);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }

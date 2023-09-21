@@ -17,14 +17,15 @@ const header = document.querySelector('.header-container')
 const footer = document.querySelector('.footer-text')
 const mainElement = document.querySelector('.main-container')
 
-//Change Footer Text Color Immediately for this size 
-body.onload = () =>  footer.style.color = 'var(--global-button-color)';
-
-
 function showProductImage() {
     //Update Background Image
     body.style.backgroundImage = "url('./assets/background--product.png')";
     body.style.transition = "2s";
+
+    //Update Footer Text Color
+    footer.style.color = 'var(--global-button-color)';
+    footer.style.transition = '3s';
+
     //Update Footer Text Color
     header.style.backgroundColor = 'transparent';
     header.style.transition = '4s';
@@ -52,10 +53,7 @@ function rotateThroughText() {
         let text = textCollection[counter]
         const mainText = document.querySelector('.main-text')
         
-        mainText.style.opacity = "1"
-        mainText.innerHTML = text
-        mainText.classList.add('main-text--show')
-      /*   //At initial load, the first test item does not fade in
+        //At initial load, the first test item does not fade in
         if (counter === 0){
             mainText.style.opacity = "1"
         } else {
@@ -81,7 +79,7 @@ function rotateThroughText() {
     if (counter === textCollection.length -1) {
         //At final Text item call the function, in 1 second, to fade in Product image and button
         setTimeout(showProductImage(),createButton(), 1000)
-    } */
+    }
 }
 
 rotateThroughText()
