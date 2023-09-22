@@ -64,6 +64,7 @@ body {
     margin: 0 20px 60px 20px;
     letter-spacing: 1.25px;
     animation: fadeIn 5s;
+    cursor: pointer;
 }
 
 .footer-container {
